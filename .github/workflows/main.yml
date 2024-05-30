@@ -1,0 +1,24 @@
+name: Dependency Snapshot
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 8 * * 1' # Every Monday at 08:00 UTC
+
+jobs:
+  dependency-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Run snapshot action
+        uses: actions/node-dependency-submission@v1
+        with:
+          package-json-path: dvna/package.json
+          node-build-target: dvna/src/index.js
