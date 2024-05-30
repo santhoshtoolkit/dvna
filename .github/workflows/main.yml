@@ -21,4 +21,3 @@ jobs:
         uses: actions/node-dependency-submission@v1
         with:
           package-json-path: dvna/package.json
-          node-build-target: dvna/src/index.js
